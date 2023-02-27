@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient"
+    tools:context=".MainActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2022.02.1 / 19 : 36 \n갈릴리수양관 / 소망의 동산"
+        android:textColor="#ffffff"
+        android:textSize="11dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="23dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/black"
+        />
+
+    <ImageButton
+        android:id="@+id/home_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:src="@drawable/home"
+        android:padding="0dp"
+        android:layout_marginRight="23dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/black"
+        />
+
+    <View
+        android:id="@+id/black"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <View
+        android:id="@+id/blue"
+        android:layout_width="0dp"
+        android:layout_height="68dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/black"
+        />
+
+    <TextView
+        android:id="@+id/search_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="안장자 검색"
+        android:textSize="20dp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="-20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/blue"
+        />
+
+    <TextView
+        android:id="@+id/search_name2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이름 검색"
+        android:textSize="46dp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="-8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_name"
+        />
+
+    <View
+        android:id="@+id/search_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_marginTop="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_name2"
+        />
+
+    <SearchView
+        android:id="@+id/search_view"
+        android:layout_width="279dp"
+        android:layout_height="68dp"
+        android:background="@drawable/rounded_corner_2"
+        android:layout_marginLeft="33dp"
+        android:queryHint="이름을 입력해 주세요"
+        app:layout_constraintTop_toTopOf="@id/search_bar"
+        app:layout_constraintBottom_toBottomOf="@id/search_bar"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/button"
+        android:background="@android:color/transparent"
+        app:layout_constraintTop_toTopOf="@id/search_bar"
+        app:layout_constraintBottom_toBottomOf="@id/search_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginRight="30dp"
+        />
+    <TextView
+        android:id="@+id/erorr_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="정상 작동이 안되거나 검색 오류시 관리자에게 문의하세요"
+        android:textSize="11dp"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:layout_marginTop="396dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_name2"
+        />
+
+    <TextView
+        android:layout_width="302dp"
+        android:layout_height="24dp"
+        android:background="@drawable/rounded_corner"
+        android:text="070-7121-5000"
+        android:textSize="17dp"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/erorr_text"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
