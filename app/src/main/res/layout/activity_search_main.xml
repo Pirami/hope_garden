@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient"
-    tools:context=".MainActivity">
+    tools:context=".SearchActivity">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
         app:layout_constraintTop_toBottomOf="@id/search_name2"
         />
 
-    <SearchView
+    <EditText
         android:id="@+id/search_view"
         android:layout_width="279dp"
         android:layout_height="68dp"
@@ -99,6 +99,7 @@
         />
 
     <ImageButton
+        android:id="@+id/search_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/button"

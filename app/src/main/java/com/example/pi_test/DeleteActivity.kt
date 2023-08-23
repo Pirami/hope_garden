@@ -28,7 +28,7 @@ class DeleteActivity : AppCompatActivity() {
         deleteBtn.setOnClickListener {
 
             val name = editTxtdelname.text.toString().trim()
-            val dbHelper = DBHelper.getInstance(this,"member.db",)
+            val dbHelper = DBHelper.getInstance(this,"member.db")
             dbHelper.delete(name)
 
 

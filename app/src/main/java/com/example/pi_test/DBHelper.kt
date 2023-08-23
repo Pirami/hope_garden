@@ -3,6 +3,7 @@ package com.example.pi_test
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 
 //Dao ==
 
@@ -32,9 +33,18 @@ class DBHelper(context:Context,filename:String):SQLiteOpenHelper(context,filenam
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        var sql : String = " DROP TABLE IF EXISTS MEMBER "
+        TODO("Not yet implemented")
+        var sql: String = " DROP TABLE IF EXISTS MEMBER "
         db?.execSQL(sql)
         onCreate(db)
+    }
+
+    fun chage(activity: String) {
+        var sql = " DROP TABLE IF EXISTS MEMBER "
+        var db = this.writableDatabase
+        db.execSQL(sql)
+        onCreate(db)
+        Log.d("activity 결과: " , activity)
     }
 
     fun insert(vo: Member) {
