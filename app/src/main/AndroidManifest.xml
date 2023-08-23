@@ -6,7 +6,7 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/group"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.PI_test"
@@ -20,6 +20,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".DeleteActivity"></activity>
+        <activity android:name=".ReviseActivity"></activity>
+        <activity android:name=".AllmemberActivity"></activity>
     </application>
 
 </manifest>
