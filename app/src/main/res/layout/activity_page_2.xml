@@ -97,6 +97,7 @@
         />
 
     <TextView
+        android:id="@+id/name_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="'홍길동'"
@@ -132,8 +133,8 @@
         app:layout_constraintBottom_toBottomOf="@id/view_1"
         />
 
-    <View
-        android:id="@+id/view_2"
+    <TextView
+        android:id="@+id/textViewinfo_mod"
         android:layout_width="312dp"
         android:layout_height="280dp"
         android:layout_marginTop="20dp"
@@ -148,8 +149,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/view_2"
-        android:layout_marginTop="-30dp"
+        app:layout_constraintTop_toTopOf="@id/name_search"
+        android:layout_marginTop="50dp"
         android:orientation="horizontal">
 
     <RadioButton

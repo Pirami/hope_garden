@@ -161,7 +161,7 @@ class DBHelper(context:Context,filename:String):SQLiteOpenHelper(context,filenam
 //    }
 
     fun search(name: String): String {
-        var sql = " SELECT id, profile, name, sex, chId, title, birth, reborn, death, asleep, userid, created, updater, updated, churchName FROM MEMBER WHERE NAME LIKE" +
+        var sql = " SELECT id, profile, name, sex, chId, title, birth, reborn, death, asleep, userid, created, updater, updated, churchName FROM MEMBER WHERE name LIKE" +
                 "'${name}'"
 
         var db = this.writableDatabase

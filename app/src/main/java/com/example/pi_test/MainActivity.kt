@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 //        val printBtn = findViewById<Button>(R.id.printBtn)
 
         mainBtn.setOnClickListener {
-            val intent = Intent(this, SearchActivity::class.java)
+            val intent = Intent(this, SearchMainActivity::class.java)
             startActivity(intent)
         }
         // 아이콘 버튼 클릭시 : DB Table 업데이트 작업  -> 보완 함부로 데이터가 삭제되지 않도록 보안 걸어둘 필요 있음.
