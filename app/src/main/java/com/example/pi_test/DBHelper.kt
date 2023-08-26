@@ -41,11 +41,12 @@ class DBHelper(context:Context,filename:String):SQLiteOpenHelper(context,filenam
     }
 
     fun chage(activity: String, deceased: List<MemberVo>) {
-        var sql = " DROP TABLE IF EXISTS MEMBER "
-        var db = this.writableDatabase
-        db.execSQL(sql)
-        onCreate(db)
+//        var sql = " DROP TABLE IF EXISTS MEMBER "
+//        var db = this.writableDatabase
+//        db.execSQL(sql)
+//        onCreate(db)
         Log.d("activity 결과: " , activity)
+        Log.d("insert 확인: " , deceased.toString())
         insertMembers(deceased)
         Log.d("insert 결과: " , activity)
     }

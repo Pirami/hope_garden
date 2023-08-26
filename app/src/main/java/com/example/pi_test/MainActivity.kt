@@ -57,9 +57,10 @@ class MainActivity : AppCompatActivity() {
                         // API 호출이 성공했습니다.
                         val user = response.body()
 //                        Log.d("MainActivity", "User created: $user")
-                        Log.d("MainActivity", "response created: ${response.toString()}")
+                        Log.d("MainActivity", "response created: ${response.body()?.result}")
                         // 응답 데이터 로그로 출력
                         Log.d("MainActivity", "Response data: ${response.message()}")
+
                     } else {
                         // API 호출이 실패했습니다.
                         Log.e("MainActivity", "Error creating user: ${response.errorBody()}")
