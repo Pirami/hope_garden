@@ -13,6 +13,22 @@ class SearchView : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_page_2)
 
+        val homeBtn = findViewById<ImageButton>(R.id.home_btn)
+
+        homeBtn.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        val backBtn = findViewById<ImageButton>(R.id.back_btn)
+
+        backBtn.setOnClickListener {
+            val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
+        }
+
+        val intent = intent
+        val data = intent.getStringExtra("데이터 이름")
 //
 //        val editTxtname = findViewById<EditText>(R.id.search_view)
 ////        val textViewinfo = findViewById<TextView>(R.id.textViewinfo)

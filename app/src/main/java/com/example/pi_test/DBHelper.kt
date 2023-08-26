@@ -74,48 +74,78 @@ class DBHelper(context:Context,filename:String):SQLiteOpenHelper(context,filenam
         val statement = db.compileStatement("INSERT INTO ${DatabaseContract.TABLE_NAME} (id, profile, name, sex, chId, title, birth, reborn, death, asleep, userid, created, updater, updated, churchName) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")
         if (deceased.id != null) {
             statement.bindString(1, deceased.id)
+        } else {
+            statement.bindString(1, "Null")
         }
         if (deceased.profile != null) {
             statement.bindString(2, deceased.profile)
+        } else {
+            statement.bindString(2, "Null")
         }
         if (deceased.name != null) {
             statement.bindString(3, deceased.name)
+        } else {
+            statement.bindString(3, "Null")
         }
         if (deceased.sex != null) {
             statement.bindString(4, deceased.sex)
+        } else {
+            statement.bindString(4, "Null")
         }
         if (deceased.chId != null) {
             statement.bindString(5, deceased.chId)
+        } else {
+            statement.bindString(5, "Null")
         }
         if (deceased.title != null) {
             statement.bindString(6, deceased.title)
+        } else {
+            statement.bindString(6, "Null")
         }
         if (deceased.birth != null) {
             statement.bindString(7, deceased.birth)
+        } else {
+            statement.bindString(7, "Null")
         }
         if (deceased.reborn != null) {
             statement.bindString(8, deceased.reborn)
+        } else {
+            statement.bindString(8, "Null")
         }
         if (deceased.death != null) {
             statement.bindString(9, deceased.death)
+        } else {
+            statement.bindString(9, "Null")
         }
         if (deceased.asleep != null) {
             statement.bindString(10, deceased.asleep)
+        } else {
+            statement.bindString(10, "Null")
         }
         if (deceased.userId != null) {
             statement.bindString(11, deceased.userId)
+        } else {
+            statement.bindString(11, "Null")
         }
         if (deceased.created != null) {
             statement.bindString(12, deceased.created)
+        } else {
+            statement.bindString(12, "Null")
         }
         if (deceased.updater != null) {
             statement.bindString(13, deceased.updater)
+        } else {
+            statement.bindString(13, "Null")
         }
         if (deceased.updated != null) {
             statement.bindString(14, deceased.updated)
+        } else {
+            statement.bindString(14, "Null")
         }
         if (deceased.churchName != null) {
             statement.bindString(15, deceased.churchName)
+        } else {
+            statement.bindString(15, "Null")
         }
             statement.executeInsert()
 //        Log.d("activity 결과: data Insert 되었습니다.", "data 저장완료")
@@ -130,29 +160,29 @@ class DBHelper(context:Context,filename:String):SQLiteOpenHelper(context,filenam
 //
 //    }
 
-//    fun search(name: String): String {
-//        var sql = " SELECT SEQ, NAME, AGE, ADDRESS FROM MEMBER WHERE NAME LIKE" +
-//                "'${name}'"
-//
-//        var db = this.writableDatabase
-//        var result = db.rawQuery(sql, null)
-//
-//        var str: String? = ""
-//
-//        while (result.moveToNext()) {
-//            str += " 번호: " + result.getString(result.getColumnIndex("SEQ")) + " \n " +
-//                    "이름: " + result.getString(result.getColumnIndex("NAME")) + " \n " +
-//                    "나이: " + result.getString(result.getColumnIndex("AGE")) + " \n " +
-//                    "거주지: " + result.getString(result.getColumnIndex("ADDRESS"))
-//        }
-//
-//        if(str == ""){
-//            println("검색된 데이터가 없습니다.")
-//        }
-//
-//        return str!!
-//
-//    }
+    fun search(name: String): String {
+        var sql = " SELECT id, profile, name, sex, chId, title, birth, reborn, death, asleep, userid, created, updater, updated, churchName FROM MEMBER WHERE NAME LIKE" +
+                "'${name}'"
+
+        var db = this.writableDatabase
+        var result = db.rawQuery(sql, null)
+
+        var str: String? = ""
+
+        while (result.moveToNext()) {
+            str += " 번호: " + result.getString(result.getColumnIndex("id")) + " \n " +
+                    "이름: " + result.getString(result.getColumnIndex("name")) + " \n " +
+                    "성별: " + result.getString(result.getColumnIndex("sex")) + " \n " +
+                    "교회: " + result.getString(result.getColumnIndex("churchName"))
+        }
+
+        if(str == ""){
+            println("검색된 데이터가 없습니다.")
+        }
+
+        return str!!
+
+    }
 
     fun revise(name: String, age: Int, address: String) {
         var sql = " UPDATE MEMBER SET AGE = '${age}' WHERE NAME ='${name}';"

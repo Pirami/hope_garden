@@ -112,7 +112,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="님에 대한 검색결과"
+        android:text="검색결과"
         android:textSize="15dp"
         android:textColor="#2D3A67"
         android:layout_marginRight="100dp"
@@ -206,6 +206,7 @@
 
 
     <ImageButton
+        android:id="@+id/back_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
