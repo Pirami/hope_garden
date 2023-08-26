@@ -5,6 +5,8 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import com.example.pi_test.models.User
+import retrofit2.Callback
 
 //Dao ==
 
@@ -24,11 +26,23 @@ class DBHelper(context:Context,filename:String):SQLiteOpenHelper(context,filenam
 
 
     override fun onCreate(db: SQLiteDatabase?) {
-        var sql: String = "CREATE TABLE IF NOT EXISTS MEMBER( " +
-                "SEQ INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "NAME STRING, " +
-                "AGE INTEGER, " +
-                "ADDRESS STRING ) "
+        var sql: String = "CREATE TABLE IF NOT EXISTS ${DatabaseContract.TABLE_NAME}( " +
+//                "id STRING PRIMARY KEY AUTOINCREMENT, " +
+                "id STRING, " +
+                "profile STRING, " +
+                "name STRING, " +
+                "sex STRING, " +
+                "chId STRING, " +
+                "title STRING, " +
+                "birth STRING, " +
+                "reborn STRING, " +
+                "death STRING, " +
+                "asleep STRING, " +
+                "userid STRING, " +
+                "created STRING, " +
+                "updater STRING, " +
+                "updated STRING, " +
+                "churchName STRING ) "
 
         db?.execSQL(sql)
     }
@@ -40,56 +54,81 @@ class DBHelper(context:Context,filename:String):SQLiteOpenHelper(context,filenam
         onCreate(db)
     }
 
-    fun chage(activity: String, deceased: List<MemberVo>) {
-//        var sql = " DROP TABLE IF EXISTS MEMBER "
-//        var db = this.writableDatabase
-//        db.execSQL(sql)
-//        onCreate(db)
-        Log.d("activity 결과: " , activity)
-        Log.d("insert 확인: " , deceased.toString())
-        insertMembers(deceased)
-        Log.d("insert 결과: " , activity)
+    fun upgrade(activity: String) {
+        var sql = " DROP TABLE IF EXISTS MEMBER "
+        var db = this.writableDatabase
+        db.execSQL(sql)
+        Log.d("activity 결과: Table DROP 되었습니다." , activity)
+        onCreate(db)
+        Log.d("activity 결과: Table CREATE 되었습니다." , activity)
+
+//
+//        insertMembers(deceased)
+//
     }
 
-    fun insertMembers(deceased: List<MemberVo>) {
+    fun insertMembers(deceased: MemberVo) {
         val db = writableDatabase
-        for (member in deceased) {
-            val statement = db.compileStatement("INSERT INTO ${DatabaseContract.TABLE_NAME} (id, profile, name, sex, chId, title, birth, reborn, death, asleep, userid, created, updater, updated, churchName) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")
-            statement.bindString(1, member.id.toString())
-            statement.bindString(2, member.profile)
-            statement.bindString(3, member.name)
-            statement.bindString(4, member.sex)
-            statement.bindString(5, member.chId)
-            statement.bindString(6, member.title.toString())
-            statement.bindString(7, member.birth)
-            statement.bindString(8, member.reborn)
-            statement.bindString(9, member.death)
-            statement.bindString(10, member.asleep)
-            statement.bindString(11, member.userId)
-            statement.bindString(12, member.created)
-            statement.bindString(13, member.updater)
-            statement.bindString(14, member.updated)
-            statement.bindString(15, member.churchName)
-            statement.executeInsert()
+        Log.d("insert 확인: " , deceased.toString())
+
+        val statement = db.compileStatement("INSERT INTO ${DatabaseContract.TABLE_NAME} (id, profile, name, sex, chId, title, birth, reborn, death, asleep, userid, created, updater, updated, churchName) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")
+        if (deceased.id != null) {
+            statement.bindString(1, deceased.id)
         }
-    }
-//    fun insert(vo: Member) {
-//        var sql = " INSERT INTO MEMBER(name,age,address) " +
-//                " VALUES('${vo.name}',${vo.age},'${vo.address}')"
+        if (deceased.profile != null) {
+            statement.bindString(2, deceased.profile)
+        }
+        if (deceased.name != null) {
+            statement.bindString(3, deceased.name)
+        }
+        if (deceased.sex != null) {
+            statement.bindString(4, deceased.sex)
+        }
+        if (deceased.chId != null) {
+            statement.bindString(5, deceased.chId)
+        }
+        if (deceased.title != null) {
+            statement.bindString(6, deceased.title)
+        }
+        if (deceased.birth != null) {
+            statement.bindString(7, deceased.birth)
+        }
+        if (deceased.reborn != null) {
+            statement.bindString(8, deceased.reborn)
+        }
+        if (deceased.death != null) {
+            statement.bindString(9, deceased.death)
+        }
+        if (deceased.asleep != null) {
+            statement.bindString(10, deceased.asleep)
+        }
+        if (deceased.userId != null) {
+            statement.bindString(11, deceased.userId)
+        }
+        if (deceased.created != null) {
+            statement.bindString(12, deceased.created)
+        }
+        if (deceased.updater != null) {
+            statement.bindString(13, deceased.updater)
+        }
+        if (deceased.updated != null) {
+            statement.bindString(14, deceased.updated)
+        }
+        if (deceased.churchName != null) {
+            statement.bindString(15, deceased.churchName)
+        }
+            statement.executeInsert()
+//        Log.d("activity 결과: data Insert 되었습니다.", "data 저장완료")
+        }
+
+//    fun delete(name: String) {
+//        var sql = " DELETE FROM MEMBER WHERE NAME = " +
+//                "  '${name}' "
 //
 //        var db = this.writableDatabase
 //        db.execSQL(sql)
 //
 //    }
-
-    fun delete(name: String) {
-        var sql = " DELETE FROM MEMBER WHERE NAME = " +
-                "  '${name}' "
-
-        var db = this.writableDatabase
-        db.execSQL(sql)
-
-    }
 
 //    fun search(name: String): String {
 //        var sql = " SELECT SEQ, NAME, AGE, ADDRESS FROM MEMBER WHERE NAME LIKE" +

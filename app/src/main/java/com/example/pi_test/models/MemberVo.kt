@@ -13,11 +13,11 @@ data class MemberVo(
     @SerializedName("reborn") val reborn: String,
     @SerializedName("death") val death: String,
     @SerializedName("asleep") val asleep: String,
-    @SerializedName("userId") val userId: String,
+    @SerializedName("userid") val userId: String,
     @SerializedName("created") val created: String,
     @SerializedName("updater") val updater: String,
     @SerializedName("updated") val updated: String,
-    @SerializedName("churchName") val churchName: String
+    @SerializedName("churchname") val churchName: String
 )
 //data class MemberVo<T>(
 //    @SerializedName("id") val id: Int,

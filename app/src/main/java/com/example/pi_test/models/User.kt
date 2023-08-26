@@ -1,7 +1,7 @@
 package com.example.pi_test.models
 
 class User(
-    val status: String,
+//    val status: String,
     val result: List<MemberVo>
 
     //val id: String,

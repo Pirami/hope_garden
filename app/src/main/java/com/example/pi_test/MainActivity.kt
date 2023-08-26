@@ -56,11 +56,43 @@ class MainActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         // API 호출이 성공했습니다.
                         val user = response.body()
+                        val activity = this@MainActivity
+                        val dbHelper = DBHelper.getInstance(activity, "member.db")
+                        dbHelper.upgrade("upgrade")
 //                        Log.d("MainActivity", "User created: $user")
                         Log.d("MainActivity", "response created: ${response.body()?.result}")
-                        // 응답 데이터 로그로 출력
-                        Log.d("MainActivity", "Response data: ${response.message()}")
 
+//                        val memberVoList = api.getMemberVoList().execute().body()
+                        val memberVoList = response.body()?.result
+                        if (memberVoList != null) {
+                            for (memberVo in memberVoList) {
+                                Log.d("memberVo", "memberVo data: ${memberVo}")
+                                dbHelper.insertMembers(memberVo)
+
+
+
+
+//                                val id = memberVo.id
+//                                val profile = memberVo.profile
+//                                val name = memberVo.name
+//                                val sex = memberVo.sex
+//                                val chId = memberVo.chId
+//                                val title = memberVo.title
+//                                val birth = memberVo.birth
+//                                val reborn = memberVo.reborn
+//                                val death = memberVo.death
+//                                val asleep = memberVo.asleep
+//                                val userid = memberVo.userId
+//                                val created = memberVo.created
+//                                val updater = memberVo.updater
+//                                val updated = memberVo.updated
+//                                val churchname = memberVo.churchName
+                            }
+                            Log.d("MainActivity", "모든 data insert : 완료")
+                        }
+//                        val chage = "upgrade"
+//                        val dbHelper = DBHelper.getInstance(this,"member.db")
+//                        val deceased = "" //api 데이터
                     } else {
                         // API 호출이 실패했습니다.
                         Log.e("MainActivity", "Error creating user: ${response.errorBody()}")
@@ -73,7 +105,7 @@ class MainActivity : AppCompatActivity() {
 //                }
 
                 override fun onFailure(call: Call<User>, t: Throwable) {
-                                        // API 호출에 오류가 발생했습니다.
+                    // API 호출에 오류가 발생했습니다.
                     Log.e("MainActivity", "Error creating user: $t")
                 }
             })
