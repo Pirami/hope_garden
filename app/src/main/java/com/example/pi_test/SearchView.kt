@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pi_test.databinding.ActivityPage2Binding
-import com.example.pi_test.models.TagData
 
 class SearchView : AppCompatActivity() {
     private lateinit var binding: ActivityPage2Binding
@@ -47,24 +46,11 @@ class SearchView : AppCompatActivity() {
         val dbHelper = DBHelper.getInstance(this,"member.db",)
         val result = data?.let { dbHelper.search(it) }
         if (result != null) {
-            Log.d("데이터 조회값: ", result.toString())
+            Log.d("데이터 조회값: ", result[0].name)
         }
-//        val result = intent.getStringExtra("데이터 조회값")
-//        if (result != null) {
-//            Log.d("result: ", result)
-//        }
         nameSearch.text = data
-//        textViewinfoMod.text = result
 
         manager = GridLayoutManager(this, 3)
-
-//        var dataN = listOf(TagData(getDrawable(R.drawable.group)!!, "콘센트가 많아요"),
-//            TagData(getDrawable(R.drawable.group)!!, "조용해요"),
-//            TagData(getDrawable(R.drawable.group)!!, "책상이 넓어요"),
-//            TagData(getDrawable(R.drawable.group)!!, "눈치가 덜 보여요"),
-//            TagData(getDrawable(R.drawable.group)!!, "자리가 편해요"),
-//            TagData(getDrawable(R.drawable.group)!!, "눈이 편해요")
-//        )
 
         binding.recyclerView.apply{
             adapter = result?.let { it1 -> TagRecyclerAdapter(it1) }

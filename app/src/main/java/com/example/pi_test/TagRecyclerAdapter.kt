@@ -1,5 +1,6 @@
 package com.example.pi_test
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +12,8 @@ class TagRecyclerAdapter(private val itemList: List<Search>): RecyclerView.Adapt
     inner class MyViewHolder(val binding: TagItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Search) {
             binding.tag = item
+//            Log.d("바인딩 확인: ", item.toString())
+
         }
     }
 

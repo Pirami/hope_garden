@@ -13,29 +13,58 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/tag_background"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:background="@drawable/group"
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:id="@+id/tag_background"-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:background="@drawable/group"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+
+<!--&lt;!&ndash;            <ImageView&ndash;&gt;-->
+<!--&lt;!&ndash;                android:id="@+id/tag_image"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_width="45dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:layout_height="45dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                android:src="@{tag.name}"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:layout_constraintBottom_toBottomOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+<!--&lt;!&ndash;                app:layout_constraintTop_toTopOf="parent" />&ndash;&gt;-->
+
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+        <TextView
+            android:id="@+id/tag_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{tag.profile}"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/tag_image"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:src="@{tag.name}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+            app:layout_constraintTop_toBottomOf="parent" />
         <TextView
-            android:id="@+id/tag_text"
+            android:id="@+id/tag_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{tag.name}"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent" />
+        <TextView
+            android:id="@+id/tag_text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{tag.churchName}"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent" />
+        <TextView
+            android:id="@+id/tag_text4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -43,7 +72,7 @@
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tag_background" />
+            app:layout_constraintTop_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
