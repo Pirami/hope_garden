@@ -176,12 +176,23 @@ class DBHelper(context:Context,filename:String):SQLiteOpenHelper(context,filenam
 //        }
         val users = mutableListOf<Search>()
         while (result.moveToNext()) {
-            val profile = result.getInt(result.getColumnIndex("profile"))
+//            val id = result.getString(result.getColumnIndex("id"))
+            val profile = result.getString(result.getColumnIndex("profile"))
             val name = result.getString(result.getColumnIndex("name"))
+//            val sex = result.getString(result.getColumnIndex("sex"))
+//            val chId = result.getString(result.getColumnIndex("chId"))
+//            val title = result.getString(result.getColumnIndex("title"))
+//            val birth = result.getString(result.getColumnIndex("birth"))
+//            val reborn = result.getString(result.getColumnIndex("reborn"))
+            val death = result.getString(result.getColumnIndex("death"))
+//            val asleep = result.getString(result.getColumnIndex("asleep"))
+//            val userid = result.getString(result.getColumnIndex("userid"))
+//            val created = result.getString(result.getColumnIndex("created"))
+//            val updater = result.getString(result.getColumnIndex("updater"))
+//            val updated = result.getString(result.getColumnIndex("updated"))
             val churchName = result.getString(result.getColumnIndex("churchName"))
-            val death = result.getInt(result.getColumnIndex("death"))
 
-            val user = Search(profile.toString(), name, churchName, death.toString())
+            val user = Search(profile, name, death, churchName)
             users.add(user)
 //            str += users
         }

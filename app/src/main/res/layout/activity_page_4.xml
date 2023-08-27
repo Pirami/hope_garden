@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2022.02.1 / 19 : 36 \n갈릴리수양관 / 소망의 동산"
+        android:text="갈릴리수양관 / 소망의 동산"
         android:textColor="#ffffff"
         android:textSize="11dp"
         android:layout_marginTop="0dp"

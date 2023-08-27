@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pi_test.databinding.ActivityPage2Binding
 
@@ -41,7 +42,6 @@ class SearchView : AppCompatActivity() {
             startActivity(intent)
         }
 
-
         val data = intent.getStringExtra("데이터 이름")
         val dbHelper = DBHelper.getInstance(this,"member.db",)
         val result = data?.let { dbHelper.search(it) }
@@ -50,12 +50,11 @@ class SearchView : AppCompatActivity() {
         }
         nameSearch.text = data
 
-        manager = GridLayoutManager(this, 3)
+        val recyclerViewNews = binding.recyclerView
+        val newsAdapter = result?.let { TagRecyclerAdapter(it) }
 
-        binding.recyclerView.apply{
-            adapter = result?.let { it1 -> TagRecyclerAdapter(it1) }
-            layoutManager = manager
-            }
-
-        }
+        recyclerViewNews.adapter = newsAdapter
+        recyclerViewNews.layoutManager = LinearLayoutManager(this)
+        recyclerViewNews.setHasFixedSize(true)
     }
+}

@@ -13,7 +13,6 @@ class TagRecyclerAdapter(private val itemList: List<Search>): RecyclerView.Adapt
         fun bind(item: Search) {
             binding.tag = item
 //            Log.d("바인딩 확인: ", item.toString())
-
         }
     }
 
@@ -28,6 +27,7 @@ class TagRecyclerAdapter(private val itemList: List<Search>): RecyclerView.Adapt
     }
 
     override fun getItemCount(): Int {
+        Log.d("dataSize 확인: ", itemList.size.toString())
         return itemList.size
     }
 }
