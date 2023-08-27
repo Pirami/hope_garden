@@ -29,10 +29,10 @@ class SearchMainActivity : AppCompatActivity() {
             val name = editTxtdelname.text.toString().trim()
             Log.d("데이터 이름: ", name)
             intent.putExtra("데이터 이름", name)
-            val dbHelper = DBHelper.getInstance(this,"member.db",)
-            val result = dbHelper.search(name)
-            Log.d("데이터 조회값: ", result)
-            intent.putExtra("데이터 조회값", result)
+//            val dbHelper = DBHelper.getInstance(this,"member.db",)
+//            val result = dbHelper.search(name)
+//            Log.d("데이터 조회값: ", result)
+//            intent.putExtra("데이터 조회값", result)
             startActivity(intent)
 //            textViewinfo_del.text = 름
         }

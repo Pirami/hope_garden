@@ -3,19 +3,32 @@ package com.example.pi_test
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
+import android.util.Log
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.pi_test.databinding.ActivityPage2Binding
+import com.example.pi_test.models.TagData
 
 class SearchView : AppCompatActivity() {
+    private lateinit var binding: ActivityPage2Binding
+    private lateinit var manager: RecyclerView.LayoutManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_page_2)
+//        setContentView(R.layout.activity_page_2)
+
+        // ActivityMainBinding을 초기화합니다.
+        binding = ActivityPage2Binding.inflate(layoutInflater)
+
+        // ActivityPage2Binding을 setContentView로 설정합니다.
+        setContentView(binding.root)
+
+        manager = GridLayoutManager(this, 3)
 
         val homeBtn = findViewById<ImageButton>(R.id.home_btn)
         val nameSearch = findViewById<TextView>(R.id.name_search)
-        val textViewinfoMod = findViewById<TextView>(R.id.textViewinfo_mod)
+//        val textViewinfoMod = findViewById<TextView>(R.id.textViewinfo_mod)
 
         homeBtn.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
@@ -29,27 +42,34 @@ class SearchView : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val intent = intent
+
         val data = intent.getStringExtra("데이터 이름")
-        val result = intent.getStringExtra("데이터 조회값")
-        nameSearch.text = data
-        textViewinfoMod.text = result
-
-//
-//        val editTxtname = findViewById<EditText>(R.id.search_view)
-////        val textViewinfo = findViewById<TextView>(R.id.textViewinfo)
-//        val findBtn = findViewById<ImageButton>(R.id.search_btn)
-//
-//        findBtn.setOnClickListener {
-//            val intent = Intent(this, DataUpdateActivity::class.java)
-//            startActivity(intent)
-//            val name = editTxtname.text.toString().trim()
-////            val dbHelper = DBHelper.getInstance(this,"member.db",)
-////            val result = dbHelper.search(name)
-//
-////            textViewinfo.text = result
-//
+        val dbHelper = DBHelper.getInstance(this,"member.db",)
+        val result = data?.let { dbHelper.search(it) }
+        if (result != null) {
+            Log.d("데이터 조회값: ", result.toString())
+        }
+//        val result = intent.getStringExtra("데이터 조회값")
+//        if (result != null) {
+//            Log.d("result: ", result)
 //        }
+        nameSearch.text = data
+//        textViewinfoMod.text = result
 
+        manager = GridLayoutManager(this, 3)
+
+//        var dataN = listOf(TagData(getDrawable(R.drawable.group)!!, "콘센트가 많아요"),
+//            TagData(getDrawable(R.drawable.group)!!, "조용해요"),
+//            TagData(getDrawable(R.drawable.group)!!, "책상이 넓어요"),
+//            TagData(getDrawable(R.drawable.group)!!, "눈치가 덜 보여요"),
+//            TagData(getDrawable(R.drawable.group)!!, "자리가 편해요"),
+//            TagData(getDrawable(R.drawable.group)!!, "눈이 편해요")
+//        )
+
+        binding.recyclerView.apply{
+            adapter = result?.let { it1 -> TagRecyclerAdapter(it1) }
+            layoutManager = manager
+            }
+
+        }
     }
-}

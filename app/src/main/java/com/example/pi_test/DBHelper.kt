@@ -5,8 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
-import com.example.pi_test.models.User
-import retrofit2.Callback
+import com.example.pi_test.models.Search
 
 //Dao ==
 
@@ -160,27 +159,37 @@ class DBHelper(context:Context,filename:String):SQLiteOpenHelper(context,filenam
 //
 //    }
 
-    fun search(name: String): String {
+    fun search(name: String): MutableList<Search> {
         var sql = " SELECT id, profile, name, sex, chId, title, birth, reborn, death, asleep, userid, created, updater, updated, churchName FROM MEMBER WHERE name LIKE" +
-                "'${name}'"
+                "'%${name}%'"
 
         var db = this.writableDatabase
         var result = db.rawQuery(sql, null)
 
         var str: String? = ""
 
+//        while (result.moveToNext()) {
+//            str += //" 사진: " + result.getString(result.getColumnIndex("profile")) + " \n " +
+//                    "성명: " + result.getString(result.getColumnIndex("name")) + " \n " +
+//                    "교회명: " + result.getString(result.getColumnIndex("churchName")) + " \n " +
+//                    "소천일: " + result.getString(result.getColumnIndex("death"))
+//        }
+        val users = mutableListOf<Search>()
         while (result.moveToNext()) {
-            str += " 번호: " + result.getString(result.getColumnIndex("id")) + " \n " +
-                    "이름: " + result.getString(result.getColumnIndex("name")) + " \n " +
-                    "성별: " + result.getString(result.getColumnIndex("sex")) + " \n " +
-                    "교회: " + result.getString(result.getColumnIndex("churchName"))
-        }
+            val profile = result.getInt(result.getColumnIndex("profile"))
+            val name = result.getString(result.getColumnIndex("name"))
+            val churchName = result.getString(result.getColumnIndex("churchName"))
+            val death = result.getInt(result.getColumnIndex("death"))
 
+            val user = Search(profile.toString(), name, churchName, death.toString())
+            users.add(user)
+//            str += users
+        }
         if(str == ""){
             println("검색된 데이터가 없습니다.")
         }
 
-        return str!!
+        return users //str!!
 
     }
 
