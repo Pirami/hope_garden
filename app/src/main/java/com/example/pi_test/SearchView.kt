@@ -53,8 +53,20 @@ class SearchView : AppCompatActivity() {
         val recyclerViewNews = binding.recyclerView
         val newsAdapter = result?.let { TagRecyclerAdapter(it) }
 
+        //어댑터 설정
         recyclerViewNews.adapter = newsAdapter
         recyclerViewNews.layoutManager = LinearLayoutManager(this)
-        recyclerViewNews.setHasFixedSize(true)
+//        recyclerViewNews.setHasFixedSize(true)
+
+//        adapter.setItemClickListener(object : ContactsListAdapter.OnItemClickListener{
+//            override fun onClick(v: View, position: Int) {
+//                val item = contactsList[position]
+//
+//                Toast.makeText(v.context, "Activity\n${item.name}\n${item.tel}", Toast.LENGTH_SHORT).show()
+//                item.name = item.name + "1"
+//                adapter.notifyDataSetChanged()
+//            }
+//        })
+
     }
 }

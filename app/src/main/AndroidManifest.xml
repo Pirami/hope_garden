@@ -28,7 +28,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SearchView"></activity>
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".MemberSearchView"></activity>
+        <activity android:name=".MemberSearchFamilyView"></activity>
         <activity android:name=".SearchMainActivity"></activity>
 <!--        <activity android:name=".DeleteActivity"></activity>-->
 <!--        <activity android:name=".ReviseActivity"></activity>-->
