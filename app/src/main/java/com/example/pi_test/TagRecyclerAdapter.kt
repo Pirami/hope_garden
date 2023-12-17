@@ -14,31 +14,34 @@ class TagRecyclerAdapter(private val itemList: List<Search>): RecyclerView.Adapt
     inner class MyViewHolder(val binding: TagItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Search) {
             binding.tag = item
+            Log.d("바인딩 확인: ", item.toString())
 
             // item의 정보를 뽑아내기
             val name = item.name
             val churchName = item.churchName
-//            val sex = item.sex
-//            val id = item.id
+            val sex = item.sex
             val death = item.death
-//            val reborn = item.reborn
-//            val birth = item.birth
+            val id = item.id
+            val asleep = item.asleep
+            val reborn = item.reborn
+            val birth = item.birth
 
-            Log.d("확인: ", "${name}(${churchName})")
+            Log.d("교회확인: ", "${id}${name}${death}${churchName}${asleep}${reborn}${sex}${birth}")
 //            val toast = Toast.makeText(requireContext(), "확인: ${name}(${churchName})", Toast.LENGTH_SHORT)
 //            toast.show()
 //            Log.d("바인딩 확인: ", item.toString())
             itemView.setOnClickListener {
 //                data 넘어온 것 확인 완료 (클릭시 -> activity_Page 3 으로 넘겨주기)
-                Log.d("확인2: ", "${name}(${churchName})")
+                Log.d("확인2: ", "${name}${death}${churchName}")
                 val intent = Intent(itemView.context, MemberSearchView::class.java)
                 intent.putExtra("name", name)
                 intent.putExtra("churchName", churchName)
-//                intent.putExtra("sex", sex)
-//                intent.putExtra("id", id)
+                intent.putExtra("sex", sex)
+                intent.putExtra("id", id)
                 intent.putExtra("death", death)
-//                intent.putExtra("reborn", reborn)
-//                intent.putExtra("birth", birth)
+                intent.putExtra("asleep", asleep)
+                intent.putExtra("reborn", reborn)
+                intent.putExtra("birth", birth)
                 itemView.context.startActivity(intent)
 //                intent.run { context.startActivity(this) }
 //                val intent = Intent(itemView?.context, MemberSearchView::class.java)

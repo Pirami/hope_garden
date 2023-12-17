@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.ImageButton
 import com.example.pi_test.Interface.UserApi
 import com.example.pi_test.models.User
+import com.example.pi_test.models.UserFamilyList
 //import com.example.pi_test.models.Config
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,10 +36,9 @@ class MainActivity : AppCompatActivity() {
         // 아이콘 버튼 클릭시 : DB Table 업데이트 작업  -> 보완 함부로 데이터가 삭제되지 않도록 보안 걸어둘 필요 있음.
         updateBtn.setOnClickListener {
             // 토큰과 사용자 정보를 생성합니다.
-
             val token = "FLKFIQIQIEIRFNFVLQIEFOKQOIWJLSKNDVOEDOIWGHENFOA78F"
             val devName = "garden"
-            val keyword = "황영희"
+//            val keyword = "황영희"
 //            val config = Config(
 //                tokenId = token,
 //                dev_name = devName,
@@ -49,6 +49,8 @@ class MainActivity : AppCompatActivity() {
             val networkClient = NetworkClient()
             val userApi = networkClient.createService(UserApi::class.java)
             val call = userApi.getUser(devName, token)
+            val family_call = userApi.getUserFamily(devName, token)
+            val gestBook_call = userApi.getGuestBook(devName, token, aId = "") //추후 aid 추가해야함.
 
             // API 호출 결과를 처리합니다.
             call.enqueue(object : Callback<User> {
@@ -68,31 +70,9 @@ class MainActivity : AppCompatActivity() {
                             for (memberVo in memberVoList) {
                                 Log.d("memberVo", "memberVo data: ${memberVo}")
                                 dbHelper.insertMembers(memberVo)
-
-
-
-
-//                                val id = memberVo.id
-//                                val profile = memberVo.profile
-//                                val name = memberVo.name
-//                                val sex = memberVo.sex
-//                                val chId = memberVo.chId
-//                                val title = memberVo.title
-//                                val birth = memberVo.birth
-//                                val reborn = memberVo.reborn
-//                                val death = memberVo.death
-//                                val asleep = memberVo.asleep
-//                                val userid = memberVo.userId
-//                                val created = memberVo.created
-//                                val updater = memberVo.updater
-//                                val updated = memberVo.updated
-//                                val churchname = memberVo.churchName
                             }
                             Log.d("MainActivity", "모든 data insert : 완료")
                         }
-//                        val chage = "upgrade"
-//                        val dbHelper = DBHelper.getInstance(this,"member.db")
-//                        val deceased = "" //api 데이터
                     } else {
                         // API 호출이 실패했습니다.
                         Log.e("MainActivity", "Error creating user: ${response.errorBody()}")
@@ -109,40 +89,38 @@ class MainActivity : AppCompatActivity() {
                     Log.e("MainActivity", "Error creating user: $t")
                 }
             })
-//            startActivity(Intent(this, RestApiActivity::class.java))
-//                val chage = "upgrade"
-//                val dbHelper = DBHelper.getInstance(this,"member.db")
-//                val deceased = "" //api 데이터
-//
-//
-//
-//                dbHelper.chage(chage, deceased)
 
+            // API 호출 결과를 처리합니다.
+            family_call.enqueue(object : Callback<UserFamilyList> {
+                override fun onResponse(call: Call<UserFamilyList>, response: Response<UserFamilyList>) {
+                    if (response.isSuccessful) {
+                        // API 호출이 성공했습니다.
+                        val user = response.body()
+                        val activity = this@MainActivity
+                        val dbHelper = DBHelper.getInstance(activity, "member.db")
+                        dbHelper.upgrade("upgrade")
+//                        Log.d("MainActivity", "User created: $user")
+                        Log.d("MainActivity", "response created: ${response.body()?.result}")
 
-            // Rest API 호출해서 Data 가져오는 과정
-//            val mem = Member(0,
-//                editTextname.text.toString().trim(),
-//                editTextage.text.toString().toInt(),
-//                editTxtaddress.text.toString().trim())
-//
-//            val dbHelper = DBHelper.getInstance(this,"member.db",)//.insert(mem)해도 됨
-//            dbHelper.insert(mem)
+//                        val memberVoList = api.getMemberVoList().execute().body()
+                        val memberVoList = response.body()?.result
+                        if (memberVoList != null) {
+                            for (memberVo in memberVoList) {
+                                Log.d("memberVo", "memberVo data: ${memberVo}")
+//                                임시주석
+//                                dbHelper.insertMembersFamily(memberVo)
+                            }
+                            Log.d("MainActivity", "모든 data insert : 완료")
+                        }
+                    } else {
+                        // API 호출이 실패했습니다.
+                        Log.e("MainActivity", "Error creating user: ${response.errorBody()}")
+                    }
+                }
+                override fun onFailure(call: Call<UserFamilyList>, t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+            })
         }
-//
-//        searchBtn.setOnClickListener {
-//            val intent = Intent(this, SearchActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        modBtn.setOnClickListener {
-//            val intent = Intent(this, ReviseActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        printBtn.setOnClickListener {
-//            val intent = Intent(this, AllmemberActivity::class.java)
-//            startActivity(intent)
-//
-//        }
     }
 }

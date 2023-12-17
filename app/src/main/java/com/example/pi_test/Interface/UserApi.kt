@@ -2,6 +2,7 @@ package com.example.pi_test.Interface
 
 import com.example.pi_test.models.MemberVo
 import com.example.pi_test.models.User
+import com.example.pi_test.models.UserFamilyList
 //import com.example.pi_test.models.Config
 import retrofit2.Call
 import retrofit2.http.*
@@ -17,8 +18,12 @@ interface UserApi {
     @GET("/ex/load_asleep.php")
     fun getUser(@Query("dev_name") devName: String, @Query("tokenId") tokenId: String): Call<User>
 
-//    @GET("/users/{id}")
-//    fun getUser(@Path("id") id: Int): Call<User>
+    @POST("/ex/load_asleep_family.php")
+    fun getUserFamily(@Query("dev_name") devName: String, @Query("tokenId") tokenId: String): Call<UserFamilyList> //Call<User> 가 아닌 유가족 List 로 바꿔야함.
+
+    @POST("/ex/load_asleep_guestbook.php")
+    fun getGuestBook(@Query("dev_name") devName: String, @Query("tokenId") tokenId: String, @Query("aId") aId: String): Call<UserFamilyList> //Call<User> 가 아닌 유가족 List 로 바꿔야함.
+
 
 //    @PUT("/users/{id}")
 //    fun updateUser(@Path("id") id: Int, @Body user: User): Call<User>

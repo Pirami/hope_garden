@@ -12,17 +12,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="갈릴리수양관 / 소망의 동산"
-        android:textColor="#ffffff"
+        android:textColor="#2D3A67"
         android:textSize="11dp"
         android:layout_marginTop="0dp"
         android:layout_marginLeft="23dp"
-        app:layout_constraintToactivity_page_4.xmlp_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/black"
         />
 
     <ImageButton
-        android:id="@+id/ms_home_btn"
+        android:id="@+id/home_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
@@ -37,7 +37,7 @@
     <View
         android:id="@+id/black"
         android:layout_width="0dp"
-        android:layout_height="52dp"
+        android:layout_height="72dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -190,14 +190,62 @@
             />
     </RadioGroup>
 
+    <View
+        android:id="@+id/view_1"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_name"
+        />
+
+    <TextView
+        android:id="@+id/name_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="32dp"
+        android:textColor="#2D3A67"
+        android:layout_marginLeft="95dp"
+        android:layout_marginTop="-12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_name"
+        app:layout_constraintBottom_toBottomOf="@id/view_1"
+        />
+
+    <!--    <TextView-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="검색결과"-->
+    <!--        android:textSize="15dp"-->
+    <!--        android:textColor="#2D3A67"-->
+    <!--        android:layout_marginRight="100dp"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/search_name"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@id/view_1"-->
+    <!--        />-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="312dp"
+        android:layout_height="280dp"
+        android:layout_marginTop="20dp"
+        android:text="테스트"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_1"
+        />
+
     <ImageButton
-        android:id="@+id/ms_back_btn"
+        android:id="@+id/back_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:src="@drawable/group_4"
         android:padding="0dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Search_View"

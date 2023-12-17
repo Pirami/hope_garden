@@ -5,27 +5,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
-import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.pi_test.databinding.ActivityPageFamilyBinding
+import com.example.pi_test.databinding.ActivityPageMsgBinding
 
-class MemberSearchFamilyView : AppCompatActivity() {
-    private lateinit var binding: ActivityPageFamilyBinding
+class MemberSearchFamilyViewMsg : AppCompatActivity() {
+    private lateinit var binding: ActivityPageMsgBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityPageFamilyBinding.inflate(layoutInflater)
+        binding = ActivityPageMsgBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        val data = intent.getStringExtra("data")
-//        Log.d("확인11: ", data.toString())
+        val data = intent.getStringExtra("data")
+        Log.d("확인11: ", data.toString())
 
-//        binding.memberName.text = data
+        binding.memberName.text = data
 
         val homeBtn = findViewById<ImageButton>(R.id.ms_home_btn)
         val backBtn = findViewById<ImageButton>(R.id.ms_back_btn)
-        val nameSearch = findViewById<TextView>(R.id.name_search)
 
         homeBtn.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
@@ -37,26 +34,6 @@ class MemberSearchFamilyView : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-
-        val data = intent.getStringExtra("데이터 이름")
-//        val data = "test"
-
-        val dbHelper = DBHelper.getInstance(this,"member.db",)
-        val result = data?.let { dbHelper.MembersFamily(it) }
-        if (result != null) {
-            Log.d("데이터 조회값: ", result[0].name)
-        }
-        nameSearch.text = data
-
-        val recyclerViewNews = binding.recyclerView
-        val newsAdapter = result?.let { TagRecyclerAdapter(it) }
-
-        //어댑터 설정
-        recyclerViewNews.adapter = newsAdapter
-        recyclerViewNews.layoutManager = LinearLayoutManager(this)
-
-//
 //        binding.detailName.text = data
 //        binding.detailSex.text = data!!.sex
 //        binding.detailDeath.text = data!!.death

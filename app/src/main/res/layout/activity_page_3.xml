@@ -121,7 +121,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/textbox"
+        android:src="@drawable/textbox_2"
         app:layout_constraintStart_toStartOf="@id/btn_view_1"
         app:layout_constraintTop_toTopOf="@id/btn_view_1"
         />
@@ -151,7 +151,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/textbox_2"
+        android:src="@drawable/textbox"
         app:layout_constraintStart_toStartOf="@id/btn_view_2"
         app:layout_constraintTop_toTopOf="@id/btn_view_2"
         />

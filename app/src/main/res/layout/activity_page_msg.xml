@@ -5,18 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient"
-    tools:context=".MemberSearchFamilyView"
+    tools:context=".MemberSearchFamilyViewMsg"
     >
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="갈릴리수양관 / 소망의 동산"
-        android:textColor="#ffffff"
+        android:textColor="#2D3A67"
         android:textSize="11dp"
         android:layout_marginTop="0dp"
         android:layout_marginLeft="23dp"
-        app:layout_constraintToactivity_page_4.xmlp_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/black"
         />

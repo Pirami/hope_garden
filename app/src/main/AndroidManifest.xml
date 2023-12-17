@@ -31,9 +31,7 @@
         <activity android:name=".MemberSearchView"></activity>
         <activity android:name=".MemberSearchFamilyView"></activity>
         <activity android:name=".SearchMainActivity"></activity>
-<!--        <activity android:name=".DeleteActivity"></activity>-->
-<!--        <activity android:name=".ReviseActivity"></activity>-->
-<!--        <activity android:name=".AllmemberActivity"></activity>-->
+        <activity android:name=".MemberSearchFamilyViewMsg"></activity>
     </application>
 
 

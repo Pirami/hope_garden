@@ -17,12 +17,21 @@ class MemberSearchView : AppCompatActivity() {
         binding = ActivityPage3Binding.inflate(layoutInflater)
         setContentView(binding.root)
 //
+        val id = intent.getStringExtra("id")
         val name = intent.getStringExtra("name")
+        val death = intent.getStringExtra("death")
         val churchName = intent.getStringExtra("churchName")
         val sex = intent.getStringExtra("sex")
-        val death = intent.getStringExtra("death")
+
         val reborn = intent.getStringExtra("reborn")
         val birth = intent.getStringExtra("birth")
+        Log.d("name 확인11: ", name.toString())
+        Log.d("churchName 확인11: ", churchName.toString())
+        Log.d("sex 확인11: ", sex.toString())
+        Log.d("death 확인11: ", death.toString())
+//        Log.d("reborn 확인11: ", reborn.toString())
+        Log.d("birth 확인11: ", birth.toString())
+
 //        intent.putExtra("data", name)
 //        intent.putExtra("churchName", churchName)
 //        intent.putExtra("sex", sex)
@@ -31,7 +40,7 @@ class MemberSearchView : AppCompatActivity() {
 //        intent.putExtra("reborn", reborn)
 //        intent.putExtra("birth", birth)
 //        Log.d("확인11: ", data.toString())
-//
+//detail_sex
         binding.detailName.text = name
         binding.detailSex.text = sex
         binding.detailDeath.text = death
@@ -65,6 +74,7 @@ class MemberSearchView : AppCompatActivity() {
 
         familyBtn.setOnClickListener {
             val intent = Intent(this, MemberSearchFamilyView::class.java)
+            intent.putExtra("id", id);
             intent.putExtra("name", name);
             startActivity(intent)
         }

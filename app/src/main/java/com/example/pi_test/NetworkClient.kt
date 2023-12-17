@@ -13,4 +13,12 @@ class NetworkClient {
     fun <T> createService(serviceClass: Class<T>): T {
         return retrofit.create(serviceClass)
     }
+
+    fun <T> getFamilyService(serviceClass: Class<T>): T {
+        return retrofit.create(serviceClass)
+    }
+
+    fun <T> getMsgService(serviceClass: Class<T>): T {
+        return retrofit.create(serviceClass)
+    }
 }
