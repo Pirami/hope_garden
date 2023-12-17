@@ -281,9 +281,8 @@ fun insertMembersFamily(deceased: MemberFamilyVo) {
 //
 //    }
 
-    fun MembersFamily(name: String): MutableList<Search> {
-        var sql = " SELECT id, profile, name, sex, chId, title, birth, reborn, death, asleep, userid, created, updater, updated, churchName FROM MEMBER WHERE name LIKE" +
-                "'%${name}%'"
+    fun MembersFamily(id: String): MutableList<Search> {
+        var sql = " SELECT * FROM FAMILY WHERE id = ${id} "
 
         var db = this.writableDatabase
         var result = db.rawQuery(sql, null)
@@ -299,23 +298,16 @@ fun insertMembersFamily(deceased: MemberFamilyVo) {
         val users = mutableListOf<Search>()
         while (result.moveToNext()) {
             val id = result.getString(result.getColumnIndex("id"))
-            val profile = result.getString(result.getColumnIndex("profile"))
+            val aId = result.getString(result.getColumnIndex("aId"))
+            val chId = result.getString(result.getColumnIndex("chId"))
             val name = result.getString(result.getColumnIndex("name"))
-            val death = result.getString(result.getColumnIndex("death"))
-            val churchName = result.getString(result.getColumnIndex("churchName"))
-            val asleep = result.getString(result.getColumnIndex("asleep"))
-
-            val sex = result.getString(result.getColumnIndex("sex"))
-//            val chId = result.getString(result.getColumnIndex("chId"))
-//            val title = result.getString(result.getColumnIndex("title"))
-            val birth = result.getString(result.getColumnIndex("birth"))
+            val relationship = result.getString(result.getColumnIndex("relationship"))
+            val phone = result.getString(result.getColumnIndex("phone"))
+            val userid = result.getString(result.getColumnIndex("userid"))
+            val created = result.getString(result.getColumnIndex("created"))
             val reborn = result.getString(result.getColumnIndex("reborn"))
-//            val userid = result.getString(result.getColumnIndex("userid"))
-//            val created = result.getString(result.getColumnIndex("created"))
-//            val updater = result.getString(result.getColumnIndex("updater"))
-//            val updated = result.getString(result.getColumnIndex("updated"))
 
-            val user = Search(id, profile, name, death, churchName, reborn, sex, birth, asleep)
+            val user = Search(id, aId, chId, name, relationship, phone, userid, created, reborn)
             users.add(user)
 //            str += users
         }

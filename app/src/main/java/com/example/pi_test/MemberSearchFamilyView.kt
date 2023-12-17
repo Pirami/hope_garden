@@ -18,20 +18,29 @@ class MemberSearchFamilyView : AppCompatActivity() {
         binding = ActivityPageFamilyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        val data = intent.getStringExtra("data")
-//        Log.d("확인11: ", data.toString())
+        val id = intent.getStringExtra("id")
+        val aId = intent.getStringExtra("aId")
+        val name = intent.getStringExtra("name")
+        val relationship = intent.getStringExtra("relationship")
+        val phone = intent.getStringExtra("phone")
+        val chId = intent.getStringExtra("chId")
 
-//        binding.memberName.text = data
+        binding.detailName.text = id
+        binding.detailSex.text = aId
+        binding.detailDeath.text = name
+        binding.detailBirth.text = relationship
+        binding.detailChurchName.text = phone
+        binding.detailReborn.text = chId
 
-        val homeBtn = findViewById<ImageButton>(R.id.ms_home_btn)
-        val backBtn = findViewById<ImageButton>(R.id.ms_back_btn)
+        val homeBtn = findViewById<ImageButton>(R.id.home_btn)
+        val backBtn = findViewById<ImageButton>(R.id.back_btn)
         val nameSearch = findViewById<TextView>(R.id.name_search)
 
         homeBtn.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
-//
+
         backBtn.setOnClickListener {
             val intent = Intent(this, SearchMainActivity::class.java)
             startActivity(intent)
@@ -41,6 +50,9 @@ class MemberSearchFamilyView : AppCompatActivity() {
 
         val data = intent.getStringExtra("데이터 이름")
 //        val data = "test"
+        if (data != null) {
+            Log.d("data 조회값: ", data)
+        }
 
         val dbHelper = DBHelper.getInstance(this,"member.db",)
         val result = data?.let { dbHelper.MembersFamily(it) }
